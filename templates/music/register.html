@@ -1,0 +1,50 @@
+
+{% load static %}
+
+<html>
+<head>
+<link href = "{% static 'music/css/sign.css' %}" rel = "stylesheet"   type = "text/css">
+
+<title>register</title>
+
+</head>
+
+<body>
+<div id = "Holder">
+	 
+	<div id = "register-box">
+		<form method = 'POST'>
+			{% csrf_token %}
+		
+			
+			   {{form.username.label}}
+			   {{form.username}}
+<br><br>
+			   {{form.email.label}}
+			   {{form.email}}
+			   <br><br>
+			   {{form.password1.label}}
+			   {{form.password1}}
+			   <br><br>
+			   confirm password
+			   {{form.password2}}
+			  <br><br>
+		
+
+			<input type = "submit" name = "submit"value = "register" style = "background : gold;" >
+
+		</form>
+		     {{form.errors}}
+	      	 <div class="logorsign"><p>Already have an account?</p> <a id = "alogorsign" href = "{% url 'music:login' %}">Login</a></div>
+   
+	 </div>
+	 
+		  
+</div>
+
+</body>
+
+
+
+
+</html>

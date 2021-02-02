@@ -1,0 +1,10 @@
+{% extends 'music/main.html' %}
+{% load static %}
+{% block content %}
+
+<form action = "" method = "POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class = "btn btn-success" type = "submit" name = "Submit" >
+</form>
+{% endblock %}                                                                                         

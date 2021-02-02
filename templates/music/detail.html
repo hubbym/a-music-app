@@ -1,0 +1,61 @@
+{% extends 'music/main.html' %}
+{% load static %}
+{% block title %}albums {% endblock %}
+{% block content %}
+
+<div class= 'row'>
+    <div class="col">
+        <div class="card" style = "width: 18rem; background-color: rgb(2, 1, 0);">
+            <img class="class-img-top alb" src= "{{ album.imageURL  }}" alt ="Card image cap">
+            <div class="card-body">
+                 <h2> {{ album.album_title }}</h2>
+                 <h5> {{ album.artist }}</h5>
+                 <a class = "btn btn-info" href = "{% url 'music:updateAlbum' album.id %}">update</a>
+
+               </div>
+         </div>
+    </div>
+    <div class="col-8">
+        <div class="card">
+
+        <div class="row header">  All songs</div>   
+        <div class="row">
+            
+            <div class="col col-3">Title</div>
+            <div class="col col-3">Favorite</div>
+            <div class="col col-3">Audiofile</div>
+            <div class="col col-3">Actions</div>
+            <hr><hr>
+        </div> 
+            {% for song in album.song_set.all %}
+        <div class="row">
+            <div class="col-3">{{ song.song_title }}</div>
+            <div class="col-3">fav</div>
+            <div class="col-3">"audio file"</div>
+            <div class="col-3"></div>
+        </div> 
+          
+          {% endfor %}
+       
+     </div>
+    </div>
+
+</div>
+
+<form action = "{% url 'music:favorite' album.id %}" method = "POST">
+    {% csrf_token %}
+    {% for song in album.song_set.all %}
+        <input type = "radio" id = "song{{ forloop.counter }}" name = "song" value = "{{ song.id }}">
+        <label for = "song{{ forloop.counter }}">
+            
+            {{ song.song_title }}
+            {% if song.is_favorite %}
+                <img src = "http://i.imgur.com/b9b13Rd.png"/>
+            {% endif %} 
+        </label><br> 
+        {% endfor %}
+        <input type = "submit" value = "Favorite">
+            {{ song.song_title }}.{{ song.file_type }}
+        
+</form>  
+{% endblock %}

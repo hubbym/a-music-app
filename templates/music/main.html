@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>{% block title %}moment {% endblock %}</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel = "stylesheet" href = "{% static '/music/css/main.css' %}"/>
+</head>
+<body>
+  
+
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background : black;">
+      <a id = "moment" class="navbar-brand" href="#">ORTHODOX <i class="fas fa-cross"></i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"style = " text-decoration-color : rgb(241, 209, 102);" >
+          <li class="nav-item active">
+              <a href = "{% url 'music:home' %}" >
+                <i class='fas fa-record-vinyl'></i>&nbsp;Albums
+              </a>  
+          </li>
+          &nbsp;
+          &nbsp; &nbsp;
+
+           <li class="nav-item ">
+            <a href = "#">
+              <i class='fas fa-music'></i>&nbsp;Songs
+            </a>         
+          </li>
+      </ul>
+      <form class="navbar-form form-inline" role="search" method="get" action="#">
+         
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success " type="submit">Search</button>
+      </form>
+      &nbsp;
+      &nbsp; &nbsp; 
+      
+      <ul class="navbar-nav navbar-right">
+        <li class="nav-item active">
+            <a href = "{% url 'music:addAlbum' %}">
+              <i class='fas fa-plus'></i>&nbsp;Add
+            </a> 
+            &nbsp;
+          &nbsp; &nbsp;        
+        </li>
+        
+        <li class="nav-item ">
+          <a href = "{% url 'music:logout' %}">
+            <i class='fas fa-power-off'></i>&nbsp;LogOut
+          </a> 
+          
+        
+      </li>
+    </ul>
+       
+      </div>
+    </nav>
+{% block content %}
+{% endblock %}
+</body>
+
+</html>

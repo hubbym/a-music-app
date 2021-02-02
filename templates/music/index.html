@@ -1,0 +1,38 @@
+{% extends 'music/main.html' %}
+{% load static %}
+{% block content %}
+
+{% if all_albums %}
+  <ul>
+  
+   {%  for album in all_albums %}
+     <div class="content">
+      <div class="card" style = "width: 18rem; background-color: rgb(2, 1, 0);">
+         <img class="class-img-top alb" src= "{{ album.imageURL }}" alt ="Card image cap">
+            <div class="card-body">
+              <h2> {{ album.album_title }}</h2>
+              <h5> {{ album.artist }}</h5>
+
+              <a href = " {% url 'music:detail' album.id %}" class = "btn btn-outline-info" >view details</a>
+              
+               <a href= "{% url 'music:deleteAlbum' album.id %}" class = "btn btn-outline-danger"><i class='fas fa-trash'></i></a>
+               <a href= "#" class = "btn btn-outline-warning"><i class='fas fa-star'></i></a>
+
+            
+            </div>
+      </div>
+     </div>
+    
+   {% endfor %}
+</ul>
+
+
+
+
+{% else %}
+  <h1>you dont have any albums</h1>>
+{% endif %}
+
+{% endblock %}
+ 
+
